@@ -1,7 +1,7 @@
 # pfix
 
 [US]
-Old Console Perl Admin For Postfix/mySQL Mail Server
+Old Perl Console admin for Postfix/mySQL mail server.
 
 [ES]
 Un viejo administrador Postfix y mySQL programado en Perl.
