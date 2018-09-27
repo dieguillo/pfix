@@ -29,7 +29,7 @@ my $dbh = DBI -> connect($connectionInfo,$userid,$passwd) || die "\nError al abr
 
 ### Evaluo Argumentos
 
-if (($ARGV[0] eq "add") and ($ARGV[1] eq "user")) {				# Agrega nueva Cuenta.
+if (($ARGV[0] eq "add") and ($ARGV[1] eq "user")) {			# Agrega nueva Cuenta.
 &NuevaCuenta();
 
 } elsif (($ARGV[0] eq "add") and ($ARGV[1] eq "domain")) {		# Agrega nuevo Dominio.
@@ -53,7 +53,7 @@ if (($ARGV[0] eq "add") and ($ARGV[1] eq "user")) {				# Agrega nueva Cuenta.
 } elsif ($ARGV[0] eq "pass") {		# Muestra y Modifica la clave de una cuenta.
 &ModificaPass();
 
-} elsif (($ARGV[0] eq "ver") and ($ARGV[1] eq "alias")){			# Muestra los destinos de un alias.
+} elsif (($ARGV[0] eq "ver") and ($ARGV[1] eq "alias")){		# Muestra los destinos de un alias.
 &VerAlias();
 
 } elsif (($ARGV[0] eq "ver") and ($ARGV[1] eq "user")){			# Muestra los destinos de un alias.
@@ -86,7 +86,7 @@ print "                            _\\\|/_\n";
 print "                            \(o o\)\n";
 print "  +----------------------oOO-{_}-OOo-----------------------+\n";
 print "  |  pfix v0.99                                Diego 2011  |\n";
-print "  |  Administrador de Postfix       dieperez\@buquebus.com  |\n";
+print "  |  Administrador de Postfix          dieper76\@gmail.com  |\n";
 print "  +--------------------------------------------------------+\n";
 print "  | Ejemplos de uso:                                       |\n";
 print "  |                                                        |\n";
@@ -129,13 +129,13 @@ print "  +--------------------------------------------------------+\n";
 
 sub NuevaCuenta() {
 
-my $mail;				# Contendra el mail completo.
-my $clave;				# Password de la cuenta.
+my $mail;			# Contendra el mail completo.
+my $clave;			# Password de la cuenta.
 my $inicial;			# Inicial del usuario. (para crear la ruta del maildir)
 my @divido_mail;		# Para separar el usuario del dominio del mail.
 my $usuario;			# Antes del @ en el mail.
 my $dominio;			# Despues del @ en el mail.
-my $nombre_completo;	# Nombre completo o descripcion de la cuenta.
+my $nombre_completo;		# Nombre completo o descripcion de la cuenta.
 
 # Si se paso el mail por argumento se lo asigno a la variable $mail
 # Si no, lo pido.
@@ -146,13 +146,13 @@ else { print "Ingrese el email. >"; $mail = <stdin>; chop $mail; }
 if (!esmail($mail)) { print "El email no es válido.\n"; &Fin();}
 
 # Existe la cuenta en la base?
-if ( existeMail($mail) ) {	print "Oops! la cuenta \'$mail\' ya existe.\n"; &Fin(); }
+if ( existeMail($mail) ) { print "Oops! la cuenta \'$mail\' ya existe.\n"; &Fin(); }
 
 # Obtengo usuario, la inicial y el dominio desde el mail.
-@divido_mail = split(/\@/,$mail);	# separo el usuario y dominio desde el mail.
+@divido_mail = split(/\@/,$mail);		# separo el usuario y dominio desde el mail.
 $usuario = $divido_mail[0];			# Por claridad se lo asigno a $usuario.
 $dominio = $divido_mail[1];			# Por claridad se lo asigno a $dominio.
-$inicial = substr($usuario,0,1);	# Extraigo la inicial del usuario.
+$inicial = substr($usuario,0,1);		# Extraigo la inicial del usuario.
 
 # Chequeo que exista el dominio
 if ( !existeDominio($dominio) ) {
@@ -213,7 +213,7 @@ my $usuario;
 my $dominio;
 my $inicial;		# Inicial del usuario. (para la ruta del maildir)
 my @divido_mail;	# Para separar el usuario del dominio del mail.
-my $borrar;			# Preguntare si quiere borrar el maildir.
+my $borrar;		# Preguntare si quiere borrar el maildir.
 
 # Si se paso el mail por argumento se lo asigno a la variable $mail,
 # Si no, lo pido.
@@ -854,9 +854,9 @@ sub existeDominio() {
 	my @r; 			# respuesta de la base.
 	
 	# Acepto que me pasen un mail completo tambien.
-	if (esmail($d)){ 						# Si es mail dejo solo el dominio
+	if (esmail($d)){ 			# Si es mail dejo solo el dominio
 		my @divido = split(/\@/,$d);	# separo el antes y el despues del arroba.
-		$d = $divido[1];					# reasigno con el dominio solamente.
+		$d = $divido[1];		# reasigno con el dominio solamente.
 	}
 	# Busco en mailbox_domains
 	$sql = "select domain from mailbox_domains where domain = \'$d\';";
@@ -876,7 +876,7 @@ sub esmail() {
 
 sub Fin() {
 	if (defined $consulta) 	{ $consulta -> finish(); }
-	if (defined $dbh) 		{ $dbh -> disconnect; }
+	if (defined $dbh)  { $dbh -> disconnect; }
 	exit;
 }
 
