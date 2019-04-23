@@ -14,10 +14,10 @@ our $passwd = "postfixpass";
 our $quota = 100 ; # Quota por defecto del mailbox en MB.
 
 our $connectionInfo = "DBI:mysql:database=$db;$host:$port";
-our $sql;         # para armar la sentencia sql.
-our $consulta;    # para consultar la base
-our @data;			# para extraer los registros de la consulta.
-our $rta;			# respuesta de las consultas 'no select'
+our $sql;		# para armar la sentencia sql.
+our $consulta;		# para consultar la base
+our @data;		# para extraer los registros de la consulta.
+our $rta;		# respuesta de las consultas 'no select'
 
 
 if (!@ARGV) { &ImprimeHelp(); }  # Si no hay argumentos imprimo help (y aborta)
@@ -47,10 +47,10 @@ if (($ARGV[0] eq "add") and ($ARGV[1] eq "user")) {			# Agrega nueva Cuenta.
 } elsif (($ARGV[0] eq "del") and ($ARGV[1] eq "domain")) {		# Elimina un Dominio.
 &EliminaDominio();
 
-} elsif ($ARGV[0] eq "quota") {		# Muestra y Modifica la quota de usuario.
+} elsif ($ARGV[0] eq "quota") {						# Muestra y Modifica la quota de usuario.
 &ModificaQuota();
 
-} elsif ($ARGV[0] eq "pass") {		# Muestra y Modifica la clave de una cuenta.
+} elsif ($ARGV[0] eq "pass") {						# Muestra y Modifica la clave de una cuenta.
 &ModificaPass();
 
 } elsif (($ARGV[0] eq "ver") and ($ARGV[1] eq "alias")){		# Muestra los destinos de un alias.
@@ -68,10 +68,10 @@ if (($ARGV[0] eq "add") and ($ARGV[1] eq "user")) {			# Agrega nueva Cuenta.
 } elsif (($ARGV[0] eq "importar") and ($ARGV[1] eq "alias")) {		# Importa alias desde archivo.
 &ImportaAlias();
 
-} elsif ($ARGV[0] eq "delmail") {			# Busca un mail en un alias de grupo.
+} elsif ($ARGV[0] eq "delmail") {					# Busca un mail en un alias de grupo.
 &EliminaMaildeAlias($ARGV[1],$ARGV[2]);
 
-} elsif ($ARGV[0] eq "sql") {				# Busca un mail en un alias de grupo.
+} elsif ($ARGV[0] eq "sql") {						# Busca un mail en un alias de grupo.
 &EjecutaSQL();
 
 } else { print "No entiendo lo que tengo que hacer :-(\n"; }
